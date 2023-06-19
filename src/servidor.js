@@ -17,6 +17,4 @@ servidorHttp.listen(porta, () => console.log(`Servidor rodando na porta ${porta}
 
 const io = new Server(servidorHttp)
 
-io.on("connection", (socket) => {
-    console.log(`Usuário conectado: ${socket.id}`)
-})
+export default io
