@@ -12,6 +12,10 @@ import {
   const botaoExcluir = document.getElementById("excluir-documento");
   
   tituloDocumento.textContent = nomeDocumento || "Documento sem título";
+
+  function tratarAutorizacaoSucesso(payloadToken) {
+    selecionarDocumento({ nomeDocumento, nomeUsuario: payloadToken.nomeUsuario})
+  }
   
   selecionarDocumento(nomeDocumento);
   
@@ -37,4 +41,4 @@ import {
     }
   }
   
-  export { atualizaTextoEditor, alertarERedirecionar };
+  export { atualizaTextoEditor, alertarERedirecionar, tratarAutorizacaoSucesso };
