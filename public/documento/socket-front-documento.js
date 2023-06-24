@@ -20,6 +20,11 @@ function selecionarDocumento(dadosEntrada) {
     })
 }
 
+socket.on("usuario_ja_no_documento", () => {
+    alert("Você já está no documento em outra página!")
+    window.location.href = "/index.html";
+})
+
 socket.on("usuarios_no_documento", atualizarInterfaceUsuarios)
 
 function emitirTextoEditor(dados) {
