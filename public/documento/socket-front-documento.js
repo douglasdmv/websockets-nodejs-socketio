@@ -1,3 +1,4 @@
+import { obterCookie } from "../utils/cookies.js"
 import { alertarERedirecionar, atualizarTextoEditor, tratarAutorizacaoSucesso } from "./documento.js"
 
 const socket = io("/usuarios", {
