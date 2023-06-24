@@ -1,5 +1,5 @@
 import { obterCookie } from "../utils/cookies.js"
-import { alertarERedirecionar, atualizarTextoEditor, tratarAutorizacaoSucesso } from "./documento.js"
+import { alertarERedirecionar, atualizaTextoEditor, atualizarInterfaceUsuarios, tratarAutorizacaoSucesso } from "./documento.js"
 
 const socket = io("/usuarios", {
     auth: {
@@ -16,16 +16,18 @@ socket.on("connect_error", (erro) => {
 
 function selecionarDocumento(dadosEntrada) {
     socket.emit("selecionar_documento", dadosEntrada, (texto) => {
-        atualizarTextoEditor(texto)
+        atualizaTextoEditor(texto)
     })
 }
+
+socket.on("usuarios_no_documento", atualizarInterfaceUsuarios)
 
 function emitirTextoEditor(dados) {
     socket.emit("texto_editor", dados)
 }
 
 socket.on("texto_editor_clientes", (texto) => {
-    atualizarTextoEditor(texto)
+    atualizaTextoEditor(texto)
 })
 
 function emitirExcluirDocumento(nome) {
